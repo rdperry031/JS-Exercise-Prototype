@@ -110,18 +110,27 @@ console.log('poop', jordan.stomach);
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby() {
-   
+ function Baby(name, age, favoriteToy) {
+   Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
   }
+ Baby.prototype=
+ Object.create(Person.prototype);
  
-  
+ Baby.prototype.play = function(){
+   return this.favoriteToy;
+ }
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Window binding: Default when no other rules apply. Selects everything. Essentially an error. 
+
+    2.Implicit binding: Applies to objects with methods; the value to the left of the dot.
+
+    3.Explicit binding: Call, apply, and bind. Call immediately invokes a function and has arguments passed in individually. Apply also invokes a function, but has arguments passed in as an array. Bind does not invoke a function but returns a new function that can be invoked elsewhere.
+
+    4.New binding: keyword used to construct a new object. 'this' indicates new object when constructor function is invoked.
+
   */
   
   
